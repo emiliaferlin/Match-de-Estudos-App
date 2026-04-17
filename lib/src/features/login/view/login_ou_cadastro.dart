@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:match_estudos_app/src/view/login/cadastrar_conta_view.dart';
-import 'package:match_estudos_app/src/view/login/login_view.dart';
+import 'package:match_estudos_app/src/features/login/view/cadastrar_conta_view.dart';
+import 'package:match_estudos_app/src/features/login/view/login_view.dart';
 
 class LoginOuCadastro extends StatefulWidget {
   const LoginOuCadastro({super.key});

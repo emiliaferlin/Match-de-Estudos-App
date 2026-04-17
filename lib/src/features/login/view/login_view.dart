@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:match_estudos_app/src/components/campo_text/text_form_field_login.dart';
 import 'package:match_estudos_app/src/components/notification/notification.dart';
-import 'package:match_estudos_app/src/shared/constantes.dart';
-import 'package:match_estudos_app/src/shared/text_style/textstyle.dart';
+import 'package:match_estudos_app/src/core/shared/constantes.dart';
+import 'package:match_estudos_app/src/core/shared/text_style/textstyle.dart';
 
 class LoginView extends StatefulWidget {
   final Function()? onTap;

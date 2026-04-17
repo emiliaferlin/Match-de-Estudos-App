@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:match_estudos_app/src/shared/text_style/textstyle.dart';
+import 'package:match_estudos_app/src/core/shared/text_style/textstyle.dart';
 
 class TextFormFieldLogin extends StatefulWidget {
   final TextEditingController? controller;

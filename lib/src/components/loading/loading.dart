@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_progress_loading/flutter_progress_loading.dart';
-import 'package:match_estudos_app/src/shared/constantes.dart';
+import 'package:match_estudos_app/src/core/shared/constantes.dart';
 
 class LoadingPlant {
   static initLoading(BuildContext context) {
