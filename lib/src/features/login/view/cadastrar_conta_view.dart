@@ -16,7 +16,6 @@ class CadastrarContaView extends StatefulWidget {
 
 class CadastrarContaViewState extends State<CadastrarContaView> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController nomeText = TextEditingController();
   TextEditingController emailText = TextEditingController();
   TextEditingController senhaText = TextEditingController();
   TextEditingController confirmaSenhaText = TextEditingController();
@@ -42,11 +41,6 @@ class CadastrarContaViewState extends State<CadastrarContaView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 100,
-                    child: ClipOval(child: Image.asset('assets/logo.png')),
-                  ),
-                  SizedBox(height: 10),
                   Text(
                     'Por favor, preenchar os seus dados para continuar. ',
                     style: TextStyleMatchEstudo.bodyLG(color: Colors.white),
@@ -54,19 +48,8 @@ class CadastrarContaViewState extends State<CadastrarContaView> {
                   ),
                   SizedBox(height: 25),
                   TextFormFieldLogin(
-                    controller: nomeText,
-                    hintText: 'Nome completo',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Campo obrigatório";
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 16.0),
-                  TextFormFieldLogin(
                     controller: emailText,
-                    hintText: 'Email',
+                    hintText: 'E-mail',
                     validator: (value) {
                       bool emailValid = false;
                       if (value != null) {
@@ -135,6 +118,8 @@ class CadastrarContaViewState extends State<CadastrarContaView> {
                           'Faça login.',
                           style: TextStyleMatchEstudo.bodyMD(
                             color: Colors.white,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.white,
                           ),
                         ),
                       ),

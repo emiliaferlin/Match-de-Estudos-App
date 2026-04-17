@@ -37,7 +37,6 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 200, child: Image.asset('assets/logo.png')),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16.0, top: 50.0),
                     child: TextFormFieldLogin(
