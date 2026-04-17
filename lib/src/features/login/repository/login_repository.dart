@@ -22,6 +22,14 @@ class AuthRepository {
     }
   }
 
+  Future<void> registrarUsuario(LoginRequestModel request) async {
+    try {
+      await _dio.post('/register', data: request.toMap());
+    } on ApiException {
+      rethrow;
+    }
+  }
+
   Future<void> logout() async {
     await AuthStorage.deleteToken();
   }

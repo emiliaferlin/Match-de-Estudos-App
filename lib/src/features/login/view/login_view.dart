@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:match_estudos_app/src/components/campo_text/text_form_field_login.dart';
+import 'package:match_estudos_app/src/components/navigatton_bar/navigatton_bar_views.dart';
 import 'package:match_estudos_app/src/components/notification/notification.dart';
 import 'package:match_estudos_app/src/core/shared/constantes.dart';
 import 'package:match_estudos_app/src/core/shared/text_style/textstyle.dart';
@@ -86,6 +87,21 @@ class _LoginViewState extends State<LoginView> {
                               emailController.text,
                               senhaController.text,
                             );
+
+                            // após o login, verifica se o user foi setado
+                            if (!mounted) return;
+
+                            if (authViewModel.user != null) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (_) => NavigattonBarViews(indexView: 0),
+                                ),
+                              );
+                            } else {
+                              notificacaoGenerica('Erro ao fazer login');
+                            }
                           } catch (e) {
                             if (!mounted) return;
 

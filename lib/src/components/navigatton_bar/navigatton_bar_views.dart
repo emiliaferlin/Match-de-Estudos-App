@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:match_estudos_app/src/core/shared/text_style/textstyle.dart';
 import 'package:match_estudos_app/src/features/match/view/match_view.dart';
 import 'package:match_estudos_app/src/features/perfil/view/perfil_view.dart';
-import 'package:match_estudos_app/src/features/sair/view/sair_view.dart';
+import 'package:match_estudos_app/src/features/login/view/sair/sair_view.dart';
 import 'package:match_estudos_app/src/features/sessao/view/sessao_view.dart';
 
 class NavigattonBarViews extends StatefulWidget {

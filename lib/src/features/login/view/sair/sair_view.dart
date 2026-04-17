@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:match_estudos_app/src/features/login/view/auth.dart';
+import 'package:match_estudos_app/src/features/login/viewmodel/auth_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class SairView extends StatefulWidget {
   const SairView({super.key});
@@ -15,7 +18,8 @@ class _SairViewState extends State<SairView> {
   }
 
   funcaoSair() async {
-    setState(() {});
+    final authViewmodel = context.read<AuthViewmodel>();
+    await authViewmodel.logout();
   }
 
   @override

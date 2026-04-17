@@ -3,6 +3,8 @@ import 'package:match_estudos_app/src/components/campo_text/text_form_field_logi
 import 'package:match_estudos_app/src/components/notification/notification.dart';
 import 'package:match_estudos_app/src/core/shared/constantes.dart';
 import 'package:match_estudos_app/src/core/shared/text_style/textstyle.dart';
+import 'package:match_estudos_app/src/features/login/viewmodel/auth_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class CadastrarContaView extends StatefulWidget {
   final Function()? onTap;
@@ -91,7 +93,31 @@ class CadastrarContaViewState extends State<CadastrarContaView> {
                   ),
                   SizedBox(height: 24.0),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (formKey.currentState?.validate() == true) {
+                        try {
+                          await context.read<AuthViewmodel>().registrarUsuario(
+                            emailText.text,
+                            senhaText.text,
+                          );
+
+                          if (!mounted) return;
+
+                          Navigator.pop(context);
+
+                          NotificationMatchEstudo.sucess(
+                            context,
+                            message: "Usuário registrado com sucesso!",
+                          );
+                        } catch (e) {
+                          if (!mounted) return;
+                          NotificationMatchEstudo.warning(
+                            context,
+                            message: e.toString(),
+                          );
+                        }
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       minimumSize: Size(double.infinity, 46.0),
@@ -132,9 +158,5 @@ class CadastrarContaViewState extends State<CadastrarContaView> {
         ),
       ),
     );
-  }
-
-  void genericErrorMessage(String message) {
-    NotificationMatchEstudo.warning(context, message: message);
   }
 }

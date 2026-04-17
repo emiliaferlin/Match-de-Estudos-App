@@ -21,14 +21,28 @@ class AuthViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future login(String email, String senha) async {
+  Future<void> login(String email, String senha) async {
     try {
       carregando = true;
       notifyListeners();
 
       await authRepository.login(LoginRequestModel(email: email, senha: senha));
 
-      return;
+      user = UsuarioModel(id: 1, email: email, senha: senha);
+    } finally {
+      carregando = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> registrarUsuario(String email, String senha) async {
+    try {
+      carregando = true;
+      notifyListeners();
+
+      await authRepository.registrarUsuario(
+        LoginRequestModel(email: email, senha: senha),
+      );
     } finally {
       carregando = false;
       notifyListeners();

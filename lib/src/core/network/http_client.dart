@@ -3,7 +3,7 @@ import 'package:match_estudos_app/src/core/storage/auth_storage.dart';
 import 'api_exception.dart';
 
 class HttpClient {
-  static const _baseUrl = 'http://localhost:8080';
+  static const _baseUrl = 'http://10.0.2.2:8080';
 
   static Dio create() {
     final dio = Dio(
@@ -48,52 +48,73 @@ class _ErrorInterceptor extends Interceptor {
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.receiveTimeout:
-        throw const ApiException(message: 'Tempo de conexão esgotado.');
+        return handler.reject(
+          DioException(
+            requestOptions: err.requestOptions,
+            error: const ApiException(message: 'Tempo de conexão esgotado.'),
+          ),
+        );
 
       case DioExceptionType.connectionError:
-        throw const ApiException(message: 'Sem conexão com o servidor.');
+        return handler.reject(
+          DioException(
+            requestOptions: err.requestOptions,
+            error: const ApiException(message: 'Sem conexão com o servidor.'),
+          ),
+        );
 
       case DioExceptionType.badResponse:
         final statusCode = response?.statusCode;
         final serverMessage = response?.data?['message'] as String?;
 
+        ApiException exception;
+
         switch (statusCode) {
           case 400:
-            throw ApiException(
+            exception = ApiException(
               statusCode: 400,
               message: serverMessage ?? 'Requisição inválida.',
             );
           case 401:
-            AuthStorage.deleteToken(); // limpa token expirado
-            throw ApiException(
+            AuthStorage.deleteToken();
+            exception = ApiException(
               statusCode: 401,
               message:
                   serverMessage ?? 'Sessão expirada. Faça login novamente.',
             );
           case 403:
-            throw ApiException(
+            exception = ApiException(
               statusCode: 403,
               message: serverMessage ?? 'Acesso negado.',
             );
           case 404:
-            throw ApiException(
+            exception = ApiException(
               statusCode: 404,
               message: serverMessage ?? 'Recurso não encontrado.',
             );
           case 500:
-            throw ApiException(
+            exception = ApiException(
               statusCode: 500,
               message: 'Erro interno do servidor.',
             );
           default:
-            throw ApiException(
+            exception = ApiException(
               statusCode: statusCode,
               message: serverMessage ?? 'Erro inesperado.',
             );
         }
 
+        return handler.reject(
+          DioException(requestOptions: err.requestOptions, error: exception),
+        );
+
       default:
-        throw ApiException(message: err.message ?? 'Erro desconhecido.');
+        return handler.reject(
+          DioException(
+            requestOptions: err.requestOptions,
+            error: ApiException(message: err.message ?? 'Erro desconhecido.'),
+          ),
+        );
     }
   }
 }
