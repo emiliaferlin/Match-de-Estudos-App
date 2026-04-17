@@ -15,6 +15,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   void initState() {
     super.initState();
+
     Future.microtask(() {
       context.read<AuthViewmodel>().init();
     });

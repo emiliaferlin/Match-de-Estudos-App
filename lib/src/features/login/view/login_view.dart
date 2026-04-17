@@ -3,6 +3,8 @@ import 'package:match_estudos_app/src/components/campo_text/text_form_field_logi
 import 'package:match_estudos_app/src/components/notification/notification.dart';
 import 'package:match_estudos_app/src/core/shared/constantes.dart';
 import 'package:match_estudos_app/src/core/shared/text_style/textstyle.dart';
+import 'package:match_estudos_app/src/features/login/viewmodel/auth_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   final Function()? onTap;
@@ -75,7 +77,22 @@ class _LoginViewState extends State<LoginView> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 24.0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (formKey.currentState?.validate() == true) {
+                          try {
+                            final authViewModel = context.read<AuthViewmodel>();
+
+                            await authViewModel.login(
+                              emailController.text,
+                              senhaController.text,
+                            );
+                          } catch (e) {
+                            if (!mounted) return;
+
+                            notificacaoGenerica(e.toString());
+                          }
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         minimumSize: Size(double.infinity, 46.0),
