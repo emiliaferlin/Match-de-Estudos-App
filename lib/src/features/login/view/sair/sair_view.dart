@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:match_estudos_app/src/features/login/view/auth.dart';
 import 'package:match_estudos_app/src/features/login/viewmodel/auth_viewmodel.dart';
 import 'package:provider/provider.dart';
 

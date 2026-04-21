@@ -1,18 +1,18 @@
 class PerfilModel {
-  final int id;
-  final String nome;
-  final int idade;
-  final String disciplina;
-  final String nivel;
-  final String estilo;
+  final int? id;
+  final String? nome;
+  final int? idade;
+  final String? disciplina;
+  final String? nivel;
+  final String? estilo;
 
   PerfilModel({
-    required this.id,
-    required this.nome,
-    required this.idade,
-    required this.disciplina,
-    required this.nivel,
-    required this.estilo,
+    this.id,
+    this.nome,
+    this.idade,
+    this.disciplina,
+    this.nivel,
+    this.estilo,
   });
 
   factory PerfilModel.fromMap(Map<String, dynamic> map) {

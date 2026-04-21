@@ -1,20 +1,20 @@
-class Match {
-  final int id;
-  final int perfilId;
-  final int sessaoId;
-  final int score;
-  final bool aprovado;
+class MatchModel {
+  final int? id;
+  final int? perfilId;
+  final int? sessaoId;
+  final int? score;
+  final bool? aprovado;
 
-  Match({
-    required this.id,
-    required this.perfilId,
-    required this.sessaoId,
-    required this.score,
-    required this.aprovado,
+  MatchModel({
+    this.id,
+    this.perfilId,
+    this.sessaoId,
+    this.score,
+    this.aprovado,
   });
 
-  factory Match.fromMap(Map<String, dynamic> map) {
-    return Match(
+  factory MatchModel.fromMap(Map<String, dynamic> map) {
+    return MatchModel(
       id: map['id'] as int,
       perfilId: map['perfilId'] as int,
       sessaoId: map['sessaoId'] as int,

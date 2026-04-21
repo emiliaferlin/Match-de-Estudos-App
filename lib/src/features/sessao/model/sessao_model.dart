@@ -1,22 +1,22 @@
 class SessaoModel {
-  final int id;
-  final String titulo;
-  final String disciplina;
-  final String nivel;
-  final String estilo;
-  final String dataHoraInicio;
-  final int duracaoMinutos;
-  final int vagas;
+  final int? id;
+  final String? titulo;
+  final String? disciplina;
+  final String? nivel;
+  final String? estilo;
+  final String? dataHoraInicio;
+  final int? duracaoMinutos;
+  final int? vagas;
 
   SessaoModel({
-    required this.id,
-    required this.titulo,
-    required this.disciplina,
-    required this.nivel,
-    required this.estilo,
-    required this.dataHoraInicio,
-    required this.duracaoMinutos,
-    required this.vagas,
+    this.id,
+    this.titulo,
+    this.disciplina,
+    this.nivel,
+    this.estilo,
+    this.dataHoraInicio,
+    this.duracaoMinutos,
+    this.vagas,
   });
 
   factory SessaoModel.fromMap(Map<String, dynamic> map) {
