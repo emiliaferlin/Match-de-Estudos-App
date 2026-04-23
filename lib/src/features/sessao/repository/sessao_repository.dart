@@ -14,4 +14,12 @@ class SessaoRepository {
   Future<void> criarSessao(SessaoModel sessao) async {
     await _dio.post('/sessoes', data: sessao.toMap());
   }
+
+  Future<void> editarSessao(int id, SessaoModel sessao) async {
+    await _dio.put('/sessoes/$id', data: sessao.toMap());
+  }
+
+  Future<void> excluirSessao(int id) async {
+    await _dio.delete('/sessoes/$id');
+  }
 }

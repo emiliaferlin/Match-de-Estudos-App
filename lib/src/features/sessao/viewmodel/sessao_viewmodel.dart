@@ -27,4 +27,14 @@ class SessaoViewModel extends ChangeNotifier {
     await _repo.criarSessao(sessao);
     await fetchSessoes();
   }
+
+  Future<void> editarSessao(int id, SessaoModel sessao) async {
+    await _repo.editarSessao(id, sessao);
+    await fetchSessoes();
+  }
+
+  Future<void> excluirSessao(int id) async {
+    await _repo.excluirSessao(id);
+    await fetchSessoes();
+  }
 }

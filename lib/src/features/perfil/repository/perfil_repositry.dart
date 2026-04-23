@@ -14,4 +14,12 @@ class PerfilRepository {
   Future<void> criarPerfil(PerfilModel perfil) async {
     await _dio.post('/perfis', data: perfil.toMap());
   }
+
+  Future<void> editarPerfil(int id, PerfilModel perfil) async {
+    await _dio.put('/perfis/$id', data: perfil.toMap());
+  }
+
+  Future<void> excluirPerfil(int id) async {
+    await _dio.delete('/perfis/$id');
+  }
 }

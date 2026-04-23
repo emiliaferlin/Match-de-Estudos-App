@@ -27,4 +27,14 @@ class PerfilViewModel extends ChangeNotifier {
     await _repo.criarPerfil(perfil);
     await fetchPerfis();
   }
+
+  Future<void> editarPerfil(int id, PerfilModel perfil) async {
+    await _repo.editarPerfil(id, perfil);
+    await fetchPerfis();
+  }
+
+  Future<void> excluirPerfil(int id) async {
+    await _repo.excluirPerfil(id);
+    await fetchPerfis();
+  }
 }
