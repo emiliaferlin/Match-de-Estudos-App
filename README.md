@@ -284,5 +284,4 @@ flutter run
 ---
 
 <div align="center">
-Feito com ❤️ e Flutter
 </div>
